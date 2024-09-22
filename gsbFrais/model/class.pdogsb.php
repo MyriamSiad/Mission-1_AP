@@ -206,7 +206,7 @@ class PdoGsb{
 
         $req = "insert  into lignefraisforfait (idVisiteur, mois, quantite, idFraisForfait) values ('$idVisiteur','$mois','$repas', 'REP')";
         $res = PdoGsb::$monPdo->query($req);
-        $str = "La requête Insert à réussi !! ";
+        $str = "Votre saisie a bien été prise en compte pour le repas.";
         }
 
         
@@ -215,13 +215,13 @@ class PdoGsb{
 
         $req = "insert  into lignefraisforfait (idVisiteur, mois, quantite, idFraisForfait) values ('$idVisiteur','$mois','$repas', 'REP')";
         $res = PdoGsb::$monPdo->query($req);
-        $str = "La requête Insert à réussi !! ";
+        $str = "Votre saisie a bien été prise en compte pour le repas.";
 
         }
   
         else
         {
-            $str = "La requête n'as pas aboutie Voyer cela avec la secrétaire ! ";
+            $str = "Votre requête n’a pas abouti, une erreur s’est produite. Veuillez contacter les services du Secrétariat.";
         }
 
         return $str;
@@ -253,7 +253,7 @@ class PdoGsb{
         
                 $res = PdoGsb::$monPdo->query($req);
     
-                $str = "La requête Insert à réussi !! ";
+                $str = "Votre saisie a bien été prise en compte pour le nombre de Kilomètres.";
 
             }
            else  if($res->rowCount() > 0  && $res2->rowCount() == 0)
@@ -266,14 +266,14 @@ class PdoGsb{
         
                 $res = PdoGsb::$monPdo->query($req);
     
-                $str = "La requête Insert à réussi !! ";
+                $str = "Votre saisie a bien été prise en compte pour le nombre de Kilomètres.";
             
     
             }
     
             else
             {
-                $str =  "la requête n'as pas aboutie";
+                $str =  "Votre requête n’a pas abouti, une erreur s’est produite. Veuillez contacter les services du Secrétariat.";
             }
             return $str;
         }
@@ -302,7 +302,7 @@ class PdoGsb{
         
                 $res = PdoGsb::$monPdo->query($req);
     
-                $str = "La requête Insert à réussi !! ";
+                $str = "Votre saisie a bien été prise en compte pour le nombre d'étapes";
             
             }
             else if($res->rowCount() > 0  && $res2->rowCount() == 0)
@@ -314,14 +314,14 @@ class PdoGsb{
         
                 $res = PdoGsb::$monPdo->query($req);
     
-                $str = "La requête Insert à réussi !! ";
+                $str = "Votre saisie a bien été prise en compte pour le nombre d'étapes.";
             
     
             }
     
             else
             {
-                $str = "la requête n'as pas aboutie";
+                $str = "Votre requête n’a pas abouti, une erreur s’est produite. Veuillez contacter les services du Secrétariat.";
             }
 
             return $str;
@@ -347,7 +347,7 @@ class PdoGsb{
     
         
                 $res = PdoGsb::$monPdo->query($req);
-                $str = "La requête Insert à réussi !! ";
+                $str = "Votre saisie a bien été prise en compte pour le nombre de nuités.";
 
             }
             else if($res->rowCount() > 0  && $res2->rowCount() == 0)
@@ -359,14 +359,14 @@ class PdoGsb{
         
                 $res = PdoGsb::$monPdo->query($req);
     
-                $str = "La requête Insert à réussi !! ";
+                $str = "Votre saisie a bien été prise en compte pour le nombre de nuités.";
             
     
             }
     
             else
             {
-                $str = "La Requête n'as pas aboutie";
+                $str = "Votre requête n’a pas abouti, une erreur s’est produite. Veuillez contacter les services du Secrétariat.";
             }
 
             return $str;

@@ -30,20 +30,24 @@ switch ($action) {
 		$date = date("Y-m-d");
 		$leMois = $pdo->getMoisLigne($annee,$mois);
 
+		$rep = 0;
+		$kmm = 0;
+		$nui = 0;
+		$etp = 0;
+
+		// Verifier si le input n'est pas négatif pour chaque champs
+	
+		if($repas>0){$rep = $pdo->setRepas($repas,$idVisiteur,$leMois,$date);}
 		
-		$rep = $pdo->setRepas($repas,$idVisiteur,$leMois,$date);
-		$kmm = $pdo->setKm($km,$idVisiteur,$leMois,$date );
-		$nui = $pdo->setNuites($nuites,$idVisiteur,$leMois,$date);
-		$etp = $pdo->setEtp($etapes,$idVisiteur,$leMois,$date);
+		if($km>0){$kmm = $pdo->setKm($km,$idVisiteur,$leMois,$date );}
+		if ($nuites>0){$nui = $pdo->setNuites($nuites,$idVisiteur,$leMois,$date);}
+		if ($etapes > 0) {$etp= $pdo->setEtp($etapes,$idVisiteur,$leMois,$date);}
 
 		$justificatif = $pdo -> updtJustificatif($repas, $etapes, $nuites,$km, $etp,$leMois, $idVisiteur);
 		$montant = $pdo -> updtMontant($repas, $etapes, $nuites,$km, $etp,$leMois, $idVisiteur);
 		
 
-		var_dump($rep);
-		var_dump($kmm);
-		var_dump($nui);
-		var_dump($etp);
+	
 	
 		include("views/v_accueil.php");
 		

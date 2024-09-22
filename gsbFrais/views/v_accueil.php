@@ -8,21 +8,44 @@
 
   function verifier()
   {
-    let x = document.forms["formulaire"] ["idVisiteur"].value;
+    // Ici on empêche l'envoie du Formulaire tant que ces champs 
+    // ne sont pas remplis, pour empecher toute erreur
+ 
+    function validerFormulaire(event) {
+            // Récupérer les champs du formulaire
+            const mois = document.getElementById('PeriodeM').value;
+           
+            const messageErreur = document.getElementById('erreur-message');
 
-    if(x=="")
-  {
-    let str = ("Veuillez remplir le champ id")
-    return str;
-  }
-  }
-  document.write("hello");
-</script>
+            // Réinitialiser le message d'erreur
+            messageErreur.innerHTML = '';
+            messageErreur.style.color = 'red';
 
+            // Valider si les champs ne sont pas vides
+            if (mois === '') {
+                // Empêcher l'envoi du formulaire
+                event.preventDefault();
+                // Afficher un message d'erreur
+                messageErreur.innerHTML = 'Veuillez remplir tous les champs obligatoires !';
+                return false; // On empêche l'envoi
+            }
+
+            // Si tout est bon, laisser le formulaire s'envoyer
+            return true;
+        }
+      }
+    </script>
+    
+
+<!-- j'ai décidé de mettre les inputs Visiteur et Année en readonly, pour 
+ empeché que une personne se fasse passé pour une autre 
+ et rendre le formulaire plus rapide à l'utilisation avec des 
+ champs pré-enregistrer et une année qui correspond que à l'année actuel 
+ avec la fonction date("y")-->
 <div id="accueil">
     <h1>Gestion des Frais</h1>
     <form   name ="formulaire" method="POST" action="index.php?uc=gestionFrais&action=gestionnaireFrais"
-    onsubmit="return verifier()">
+    onsubmit="validerFormulaire(event)">
 
 
    
@@ -35,7 +58,7 @@
        
         <!-- Numéro -->
       <label class="form-label" for="visiteur"> Visiteur Numéro : </label>
-        <input type="text" id="NumeroV" name ="idVisiteur" class="form-control" />
+        <input readonly id="NumeroV" name ="idVisiteur" class="form-control"  value="<?php echo($idVisiteur);?>" />
       </div>
     </div>
     
@@ -46,10 +69,11 @@
   <label class="form-label" for="Periode">Periode d'engagement :</label>
    <!--Mois-->
     <br>Mois (2 chiffres)
-    <input type="text" id="PeriodeM" name ="mois" class="form-control" />
+    <input type="text"  required = "required" id="PeriodeM" name ="mois" class="form-control" />
+    <p id="erreur-message"></p>
      <!-- Année -->
     <label class="form-label" for="PeriodeA">Année ( 4 chiffres)</label>
-    <input type="text" id="PeriodeA"  name = "annee"class="form-control" />    
+    <input readonly id="PeriodeA"  name = "annee"class="form-control" value ="<?= date("Y") ?>"  />    
   </div>
 
  
@@ -61,7 +85,7 @@
     <label class="form-label" for="RepasM">Repas Midi :  </label>
     <br>
     <?php if (!empty($rep)){echo($rep);}?>
-    <input type="number" id="Repas" name ="REP" class="form-control" />
+    <input type="number" id="Repas" name ="REP" class="form-control" value=0 />
    </div>
 
    <!--Nuités -->
@@ -69,7 +93,7 @@
     <label class="form-label" for="Nuites">Nuités : </label>
     <br>
     <?php if (!empty($nui)){echo($nui);}?>
-    <input type="number" id="Nuites" name ="NUI" class="form-control" />
+    <input type="number" id="Nuites" name ="NUI" class="form-control"  value=0  />
    </div>
 
    <!--Etape -->
@@ -77,7 +101,7 @@
     <label class="form-label" for="Etape">Etape : </label>
     <br>
     <?php if (!empty($etp)){echo($etp);}?>
-    <input type="number" id="Etape" name ="ETP" class="form-control" />
+    <input type="number" id="Etape" name ="ETP" class="form-control"  value=0  />
    </div>
 
      <!--Km -->
@@ -85,7 +109,7 @@
     <label class="form-label" for="Km">Km : </label>
     <br>
     <?php if (!empty($kmm)){echo($kmm);}?>
-    <input type="number" id="Km" name = "KM" class="form-control" />
+    <input type="number" id="Km" name = "KM" class="form-control"  value=0  />
    </div>
 
 
