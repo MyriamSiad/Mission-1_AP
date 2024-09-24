@@ -5,15 +5,15 @@ $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];
 
 
-$action= $_REQUEST['action'];
-
 
 
 switch ($action) {
     case 'gestionFrais':
     {
+		
         
         include("views/v_accueil.php");
+		
         break;
     }
 

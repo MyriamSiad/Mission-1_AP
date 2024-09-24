@@ -42,6 +42,8 @@
  et rendre le formulaire plus rapide à l'utilisation avec des 
  champs pré-enregistrer et une année qui correspond que à l'année actuel 
  avec la fonction date("y")-->
+
+ <?php $idVisiteur = $_SESSION['idVisiteur']?>;
 <div id="accueil">
     <h1>Gestion des Frais</h1>
     <form   name ="formulaire" method="POST" action="index.php?uc=gestionFrais&action=gestionnaireFrais"
