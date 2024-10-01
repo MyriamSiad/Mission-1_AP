@@ -20,6 +20,10 @@
         <li class="menu-item">
             <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
         </li>
+
+        <li class="menu-item">
+            <a href="index.php?uc=gestionhorsfrais&action=gestionhorsFrais" title="Gestion des Frais ">Gestion des frais hors frais</a>
+        </li>
     </ul>
 </nav>
 <section class="content">

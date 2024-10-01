@@ -30,6 +30,12 @@ switch ($uc) {
     case 'gestionFrais':{
         include("controllers/c_gestionFrais.php");break;
     }
+
+    case 'gestionhorsfrais':{
+        include("controllers/c_gestions_hors_forfait.php");break;
+    }
+
+    
 }
 
 include 'views/layout/vue_pied.php';

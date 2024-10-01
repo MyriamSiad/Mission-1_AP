@@ -372,8 +372,66 @@ class PdoGsb{
             return $str;
         }
         
+        public function libelle_hors_forfait()
+        {
+            $str ="";
+            $req = "select DISTINCT libelle from lignefraishorsforfait";
+
+            $res = PdoGsb::$monPdo->query($req);
+            $laLigne = $res->fetchAll();
+            return $laLigne;
+        
+        }
+        
+
+        public function fraisHorsForfait($idVisiteur, $mois, $date,$libelle,$montant)
+        {
+          /*  $str ="";
+            $req = "select * from lignefraishorsforfait where idVisiteur ='$idVisiteur'
+            and mois = '$mois' and libelle = '$libelle";
+            $res = PdoGsb::$monPdo->query($req);
+
+*/
+           // if($res -> rowCount () == 0 ) 
+            
+                $req = "insert  into lignefraishorsforfait (idVisiteur, mois,date,montant,libelle) values ('$idVisiteur','$mois','$date','$montant','$libelle')";
+                $res = PdoGsb::$monPdo->query($req);
+             
+    
+        
+                $res = PdoGsb::$monPdo->query($req);
+                $str = "Votre saisie a bien été prise en compte pour le nombre de nuités.";
+
+            
+            /*
+            else if($res->rowCount() > 0  && $res2->rowCount() == 0)
+            {
+               
+                // Requete INSERT INTO lignefraisForfait si il n'y pas de doublons  
+                $req = "insert  into lignefraishorsforfait (idVisiteur, mois,montant, libelle) values ('$idVisiteur','$mois','$montant','$libelle')";
+    
+        
+                $res = PdoGsb::$monPdo->query($req);
+    
+                $str = "Votre saisie a bien été prise en compte pour le nombre de nuités.";
+            
+    
+            }*/
+    
+           /* else
+            {
+                $str = "Votre requête n’a pas abouti, une erreur s’est produite. Veuillez contacter les services du Secrétariat.";
+            }
+*/
+            return $str;
+        }
+        
+
+        }
+
+    
 
 
-    }
+    
     
     
